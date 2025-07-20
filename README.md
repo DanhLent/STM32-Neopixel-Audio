@@ -1,102 +1,97 @@
-# STM32 Music Visualizer & Light Show
+# STM32 WS2812B Music Visualizer & Light Show
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Made with: C/C++](https://img.shields.io/badge/Made%20with-C%2F C%2B%2B-blue)](https://en.cppreference.com/)
-[![Hardware: STM32](https://img.shields.io/badge/Hardware-STM32-orange)](https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html)
 
-A real-time audio-reactive LED strip controller powered by an STM32F4 microcontroller. This project visualizes music through various dynamic light effects on a WS2812B (Neopixel) LED strip.
-
----
-
-## 📋 Table of Contents
-
-- [Demo](#-demo)
-- [Key Features](#-key-features)
-- [Tech Stack](#-tech-stack--components)
-- [System Architecture](#-system-architecture)
-- [Technical Highlights](#-technical-highlights)
-- [Installation & Usage](#-installation--usage)
-- [Future Improvements](#-future-improvements)
-- [Credits](#-credits)
+### Introduction
+This repository contains the source code for a university project demonstrating a real-time, audio-reactive light show. The system utilizes an STM32F407VET6 microcontroller to drive a WS2812B (Neopixel) addressable LED strip, creating complex visual effects including a vibrant rainbow wave and a dynamic music visualizer. A user-friendly interface is implemented with an LCD and a rotary encoder for seamless effect selection.
 
 ---
 
-## 📸 Demo
-
-*(This is the most critical section for your project. A GIF is highly recommended.)*
-
-![Demo GIF](link_to_your_gif.gif)
+### Table of Contents
+- [Demo](#demo)
+- [Key Features](#key-features)
+- [System Architecture](#system-architecture)
+- [Hardware & Software Requirements](#hardware--software-requirements)
+- [Pinout Configuration](#pinout-configuration)
+- [Peripheral Configuration](#peripheral-configuration)
+- [Installation](#installation)
+- [Credits](#credits)
 
 ---
 
-## ✨ Key Features
+### Demo
+*(Đây là phần để bạn chèn video minh chứng. Hãy xem hướng dẫn ở cuối câu trả lời này nhé.)*
 
+---
+
+### Key Features
 -   **Real-time Music Visualization:** Analyzes audio intensity from a microphone to generate synchronized lighting effects.
--   **Multiple Effects:** Includes a smooth "Rainbow Wave" effect in addition to the music mode.
--   **User Interface:** A simple UI with an LCD and a Rotary Encoder allows for easy navigation and effect selection.
+-   **Dynamic Lighting Effects:** Includes a smooth, pre-programmed "Rainbow Wave" effect.
+-   **Interactive UI:** A simple interface with an ILI9341 LCD and a Rotary Encoder allows for easy navigation and mode switching.
 
 ---
 
-## 🛠️ Tech Stack & Components
+### System Architecture
+The system is designed with a modular architecture, centered around the STM32 microcontroller which handles all processing, peripheral control, and logic.
+*(Chèn ảnh sơ đồ khối từ file báo cáo của bạn vào đây)*
+![Block Diagram](link_den_so_do_khoi.png)
+
+---
+
+### Hardware & Software Requirements
 
 #### Hardware
--   **Microcontroller:** STM32F407VET6
--   **LEDs:** WS2812B Addressable RGB LED Strip
--   **Audio Input:** MAX9814 Microphone Module
--   **Display:** ILI9
--   **Input:** Rotary Encoder with push button
+| Component | Model | Role |
+| :--- | :--- | :--- |
+| Microcontroller | STM32F407VET6 | Central processing, controls all peripherals |
+| LED Strip | WS2812B (Neopixel) | Displays visual effects |
+| Audio Module | MAX9814 Microphone | Captures ambient sound |
+| Display | ILI9341 TFT LCD | Displays the user interface |
+| Input | Rotary Encoder | User input for menu navigation |
+| Power Supply | 5V, 3A | Powers the MCU and LED strip |
 
-#### Software & Tools
--   **Language:** C/C++
--   **IDE:** STM32CubeIDE
--   **Libraries:** STM32 HAL, ARM CMSIS
-
----
-
-## 🏗️ System Architecture
-
-*(You can export the block diagram image from your project report and insert it here.)*
-
-![Block Diagram](link_to_your_diagram.png)
-
----
-
-## 🔧 Technical Highlights
-
-This section details the key engineering decisions made to optimize the system's performance.
-
--   **Non-Blocking LED Control:** Utilizes a combination of **Timer PWM and DMA** to generate the precise 800kHz signal for the WS2812B LEDs. This approach completely offloads the CPU, allowing it to focus on complex effect calculations.
--   **Efficient Audio Sampling:** Employs an **ADC with DMA (in Circular Mode)** to continuously sample the audio signal without CPU intervention, ensuring smooth and responsive visualizations.
--   **High-Speed Display Interface:** Leverages the **FSMC** (Flexible Static Memory Controller) peripheral for a parallel interface with the LCD, achieving significantly higher refresh rates compared to SPI.
--   **Robust Software Architecture:** Built upon a **State Machine** design pattern for clear, maintainable, and easily extendable management of different operational modes.
-
----
-
-## ⚙️ Installation & Usage
-
-### Prerequisites
+#### Software
 - [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)
 - An ST-Link programmer/debugger
+- Git
 
-### Steps
+---
+
+### Pinout Configuration
+This image shows the pin connections configured in STM32CubeIDE.
+*(Đây là chỗ để bạn chèn ảnh `image_2914f8.png` mà bạn đã gửi)*
+![Pinout Diagram](link_den_anh_pinout.png)
+
+---
+
+### Peripheral Configuration
+Key peripherals were configured for optimal performance. Below are screenshots of the main settings in STM32CubeIDE.
+
+#### System Clock Configuration
+*(Chèn ảnh cấu hình Clock của bạn vào đây)*
+![Clock Configuration](link_den_anh_cau_hinh_clock.png)
+
+#### TIM1 for WS2812B (PWM & DMA)
+*(Chèn ảnh cấu hình TIM1 của bạn vào đây)*
+![TIM1 Configuration](link_den_anh_cau_hinh_tim1.png)
+
+#### TIM2 & ADC1 for Audio Sampling
+*(Chèn ảnh cấu hình TIM2 và ADC1 của bạn vào đây)*
+![ADC Configuration](link_den_anh_cau_hinh_adc1.png)
+
+---
+
+### Installation
 1.  Clone the repository to your local machine:
     ```bash
     git clone [https://github.com/DanhLent/STM32-Neopixel-Audio.git](https://github.com/DanhLent/STM32-Neopixel-Audio.git)
     ```
 2.  Open STM32CubeIDE and import the project (`File > Import > General > Existing Projects into Workspace`).
-3.  Connect the hardware according to the schematics (you can add a picture of the wiring diagram here).
+3.  Connect the hardware according to the pinout diagram.
 4.  Build the project and flash it to the STM32 board.
 
 ---
 
-## 🚀 Future Improvements
-
--   Implement **FFT (Fast Fourier Transform)** for frequency-based audio analysis (e.g., reacting differently to bass, mids, and treble).
--   Design a custom **PCB** for a more compact and reliable product.
--   Add **wireless connectivity** (Bluetooth or Wi-Fi) to control the effects from a mobile application.
-
----
-
-## 🙏 Credits
-
--   The LCD driver is based on the excellent **[STM32-ILI9341-FSMC Library by @taburyak](https://github.com/taburyak/STM32-ILI9341-FSMC-Library)**.
+### Credits
+-   The ILI9341 LCD driver is based on the **[STM32-ILI9341-FSMC-Library](https://github.com/taburyak/STM32-ILI9341-320x240-FSMC-Library)**.
+-   The rainbow effect algorithm is inspired by the work of **[Adriano Tiger's Neopixel Effect Generator](https://adrianotiger.github.io/Neopixel-Effect-Generator/)**.
