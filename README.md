@@ -60,10 +60,14 @@ This repository contains the source code for an academic project demonstrating a
 Key peripherals were configured for optimal performance. Below are screenshots of the main settings in STM32CubeIDE.
 
 System Clock Configuration
+
+The system is configured to run at a maximum frequency of 72MHz, derived from an 8MHz external crystal oscillator (HSE). This ensures the highest processing performance for effect algorithms and audio analysis.
 <img width="1425" height="693" alt="image" src="https://github.com/user-attachments/assets/e228076f-3079-4436-a939-41058ce26e32" />
 
 
 TIM1 for WS2812B (PWM & DMA)
+
+Timer 1 is configured to generate an 800kHz PWM signal, precisely matching the WS2812B protocol's requirements. Calculation: 72,000,000 Hz / (Period + 1) = 800,000 Hz. DMA is set to Memory-to-Peripheral mode to automatically transfer data, completely offloading the CPU.
 
 <img width="1131" height="252" alt="image" src="https://github.com/user-attachments/assets/c61780bf-057d-4709-af8b-51c939931c8b" />
 
@@ -71,6 +75,8 @@ TIM1 for WS2812B (PWM & DMA)
 
 
 TIM2 & ADC1 for Audio Sampling
+
+Timer 2 acts as a trigger for ADC1 to ensure a consistent audio sampling rate. ADC1 and DMA are configured in Circular Mode to continuously sample audio data into a buffer without CPU intervention.
 
 <img width="1216" height="358" alt="image" src="https://github.com/user-attachments/assets/567fbaf5-463d-40ee-8ce6-482e88154295" />
 
