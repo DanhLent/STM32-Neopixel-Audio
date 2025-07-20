@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Introduction
-This repository contains the source code for a university project demonstrating a real-time, audio-reactive light show. The system utilizes an STM32F407VET6 microcontroller to drive a WS2812B (Neopixel) addressable LED strip, creating complex visual effects including a vibrant rainbow wave and a dynamic music visualizer. A user-friendly interface is implemented with an LCD and a rotary encoder for seamless effect selection.
+This repository contains the source code for an academic project demonstrating a real-time, audio-reactive light show. The system utilizes an STM32F407VET6 microcontroller to drive a WS2812B (Neopixel) addressable LED strip, creating visual effects including a vibrant rainbow wave and a dynamic music visualizer. A user-friendly interface is implemented with an LCD and a rotary encoder for seamless effect selection.
 
 ---
 
@@ -20,7 +20,7 @@ This repository contains the source code for a university project demonstrating 
 ---
 
 ### Demo
-*(Đây là phần để bạn chèn video minh chứng. Hãy xem hướng dẫn ở cuối câu trả lời này nhé.)*
+*https://www.youtube.com/watch?v=HTsP6H0X7IE*
 
 ---
 
