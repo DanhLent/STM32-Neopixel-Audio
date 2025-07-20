@@ -45,7 +45,6 @@ This repository contains the source code for an academic project demonstrating a
 #### Software
 - [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)
 - An ST-Link programmer/debugger
-- Git
 
 ---
 
@@ -87,13 +86,15 @@ Timer 2 acts as a trigger for ADC1 to ensure a consistent audio sampling rate. A
 ---
 
 ### Installation
-1.  Clone the repository to your local machine:
-    ```bash
-    git clone [https://github.com/DanhLent/STM32-Neopixel-Audio.git](https://github.com/DanhLent/STM32-Neopixel-Audio.git)
-    ```
-2.  Open STM32CubeIDE and import the project (`File > Import > General > Existing Projects into Workspace`).
-3.  Connect the hardware according to the pinout diagram.
-4.  Build the project and flash it to the STM32 board.
+<details>
+  <summary>Click to view installation guide</summary>
+  
+  1. Clone the repository to your local machine:
+     ```bash
+     git clone https://github.com/DanhLent/STM32-Neopixel-Audio.git
+     ```
+  2. Open the project in STM32CubeIDE, connect the hardware according to the pinout diagram, then build and flash to the board.
+</details>
 
 ---
 
